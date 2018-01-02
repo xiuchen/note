@@ -1,0 +1,16 @@
+1.	Professional Level
+2.	Project : Hulu/Amazon Crawler & Player
+3.	POC-Related：
+    a.	text keyword extraction , based on TF-IDF,TextRank
+    b.	text summarization ,based on TextRank, DeepLearning(OpenNMT,Tensorflow textsum, Giga Dataset)
+    c.	text classification, based on Deep learning (Character-level Convolutional Networdks for Text Classification)
+    d.	image-multilabel, face recognization
+    e.	photowall demo, server develop
+    f.	cnn news crawler
+    g.	object dection : yolo
+4.	Self-Leaning
+    a.	Deep Learning Theory,RNN,CNN
+    b.	python tools : numpy,gensim,IPython,Matplotlib
+    c.	Tensorflow, Caffe
+5.  Book
+    a.  Spring
