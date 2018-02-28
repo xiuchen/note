@@ -1,0 +1,12 @@
+总结darknet yolo 转caffe 的几个问题：
+1. darknet与caffe 中的maxpool计算不一样，导致tiny yolo转换成caffe模型的时候维度不一致 ,caffe中是 out =( input+2*pad-kenerl )//stride+1
+   darknet 中是  l.out_w = (w + 2*padding)//stride;
+2. darknet 与caffe中的bn计算方式稍微有点差别，darknet中是 (x-u)/(sqrt(variance)+eps)，caffe里面是 (x-u)/(sqrt(variance+eps))
+3. darknet yolo预测图片输入是以长边为准，等比例压缩到输入长宽，短边不够的用灰色填充，caffe模型直接把图片压缩成输入的长宽 
+
+用到的github库：
+1. https://github.com/Banus/caffe-yolo#usage
+2. https://github.com/gklz1982/caffe-yolov2
+这两个github库还是有点问题，不能直接把yolo官方提供的权重转成caffemodel，并且给的caffe网络文件也有点问题，可能需要仔细修改才能使用
+ps,darknet 提供的权重文件的前几个字节是version等，如果转换weights的时候多出来一个字节，可能是由于版本问题，其中一个标志位是size_t 的类型，在64位操作系统下面会保存成两个int的长度度
+
