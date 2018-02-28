@@ -7,6 +7,6 @@
 用到的github库：
 1. https://github.com/Banus/caffe-yolo#usage
 2. https://github.com/gklz1982/caffe-yolov2
-这两个github库还是有点问题，不能直接把yolo官方提供的权重转成caffemodel，并且给的caffe网络文件也有点问题，可能需要仔细修改才能使用
+这两个github库还是有点问题，不能直接把yolo官方提供的权重转成caffemodel，并且给的caffe网络文件也有点问题，有层缺失，顺序不一致等，可能需要仔细修改才能使用
 ps,darknet 提供的权重文件的前几个字节是version等，如果转换weights的时候多出来一个字节，可能是由于版本问题，其中一个标志位是size_t 的类型，在64位操作系统下面会保存成两个int的长度度
 
