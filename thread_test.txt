@@ -1,0 +1,54 @@
+package thread;
+
+import java.util.concurrent.Semaphore;
+
+
+public class Main2 {
+	private int count = 1;
+	Semaphore s1 = new Semaphore(1),s2= new Semaphore(1);
+	
+	class PrintOddThread implements Runnable{
+
+		@Override
+		public void run() {
+			while(count/2<50){
+				boolean flag = s1.tryAcquire();
+				if(flag){
+					System.out.println("PrintOddThread : "+count);
+					count ++;
+					s2.release();
+				}
+			}
+		}
+	}
+	class PrintEvenThread implements Runnable{
+
+		@Override
+		public void run() {
+			while(count/2<50){
+				boolean flag = s2.tryAcquire();
+				if(flag){
+					System.out.println("PrintEvenThread : "+count);
+					count ++;
+					s1.release();
+				}
+			}
+		}		
+		
+		
+	}
+	public void test(){
+		s2.tryAcquire();
+		PrintOddThread a = new PrintOddThread();
+		PrintEvenThread b = new PrintEvenThread();
+		new Thread(a).start();
+		new Thread(b).start();
+	}
+	
+
+	public static void main(String[] args) {
+		Main2 main = new Main2();
+		main.test();
+	}
+
+}
