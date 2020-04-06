@@ -1,0 +1,27 @@
+
+2020 CPVR Densely Connected Search Space for More Flexible Neural Architecture Search
+关键字：Search Space，Model Evaluation
+痛点：之前的工作 block depth & width 是手动设置的
+贡献：1，提出一个新的search space，将block数量和宽度纳入搜索范围；2，提出一个chain cost estimation algorithm 用来估计模型的latency
+方法：提出一个Densely Search Space, 由routing block，basic layer 组成一个dense network
+      采用DARTS一样的松弛操作，然后用gradient based方法优化，chain cost 方法来估计模型的loss
+数据集：classification on ImageNet, object detection on COCO
+
+2020 CPVR Block-wisely Supervised Neural Architecture Search with Knowledge Distillation
+关键字：知识蒸馏，Search Space
+痛点：NAS搜索出来的architecture 没有完全训练的情况下evaluation的结果是有误差的，不能反映网络的好坏，但是完全训练又需要很大开销
+      许多NAS方法并不比随机搜索好
+贡献：1，提出block-wise的搜索空间，保证每一个block都能充分训练，2，提出用一个老师网络来教一个学生网络，网络蒸馏，认为网络结构也是知识的一部分
+数据集：classification on ImageNet CIFAR-10 , CIFAR-100
+
+2020 CPVR Overcoming Multi-Model Forgetting in One-Shot NAS with Diversity Maximization
+关键字：Multi-Model Forgetting， one-shot NAS 
+痛点：One-shot NAS 在训练模型的时候会逐渐忘记之前训练过的模型，尤其在share weight多的情况下，越严重
+方法：将NAS建模成一个限制的优化问题，提出一个算法搜索之前的网络结构中最具有代表性的限制条件，将以上方法用于RandomNAS和GDAS中实验
+数据集：classification on CIFAR-10,PTB
+
+https://www.cnblogs.com/pinard/p/9492980.html
+https://blog.csdn.net/u014157632/article/details/102364694
+https://zhuanlan.zhihu.com/p/90495123
+https://github.com/D-X-Y/awesome-NAS
+https://github.com/markdtw/awesome-architecture-search
